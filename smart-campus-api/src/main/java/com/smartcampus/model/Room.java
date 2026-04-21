@@ -11,7 +11,7 @@ public class Room {
 
 
     public Room() {}
-    
+
     public Room(String id, String name, int capacity){
         this.id = id;
         this.name = name;
@@ -42,7 +42,7 @@ public class Room {
     public List<Sensor> getSensors(){
         return sensors;
     }
-    public void setSensors(){
+    public void setSensors(List<Sensor> sensors){
         this.sensors = sensors;
     }
 

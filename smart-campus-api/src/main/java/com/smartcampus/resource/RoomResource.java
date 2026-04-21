@@ -25,9 +25,17 @@ public class RoomResource {
     }
 
     @POST
-    public Room addRoom(Room room){
-        rooms.put(room.getId(), room);
-        return room;
+    public Room addRoom(Room room) {
+
+    System.out.println("POST CALLED");
+    System.out.println("ROOM ID = " + room.getId());
+    System.out.println("ROOM NAME = " + room.getName());
+
+    rooms.put(room.getId(), room);
+
+    System.out.println("MAP SIZE = " + rooms.size());
+
+    return room;
     }
 
     @GET
