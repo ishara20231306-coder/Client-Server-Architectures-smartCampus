@@ -9,6 +9,9 @@ public class Room {
     private int capacity;
     private List<Sensor> sensors = new ArrayList<>();
 
+
+    public Room() {}
+    
     public Room(String id, String name, int capacity){
         this.id = id;
         this.name = name;

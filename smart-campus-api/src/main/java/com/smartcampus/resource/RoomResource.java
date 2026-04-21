@@ -15,6 +15,10 @@ import java.util.*;
 public class RoomResource {
     private static Map<String, Room> rooms = new HashMap<>();
 
+    public static Map<String, Room> getRoomMap(){
+        return rooms;
+    }
+
     @GET
     public Collection<Room> getAll(){
         return rooms.values();
@@ -46,7 +50,7 @@ public class RoomResource {
         return "Deleted";
     }
 
-    public static Map<String, Room> getRoomMap(){
-        return rooms;
-    }
+    
+
+    
 }
