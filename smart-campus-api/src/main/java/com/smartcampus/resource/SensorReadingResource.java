@@ -18,12 +18,24 @@ import jakarta.ws.rs.core.MediaType;
 public class SensorReadingResource {
     
     @POST
-    public String addReading(@PathParam("sensorId")String sensorId, Reading reading){
-        for(Room r : RoomResource.getRoomMap().values()){
-            for(Sensor s : r.getSensors()){
-                if(s.getId().equals(sensorId)){
-                    if(s.getStatus().equals("MAINTENANCE")){
+    public String addReading(@PathParam("sensorId") String sensorId, Reading reading) {
+
+        for (Room r : RoomResource.getRoomMap().values()) {
+
+            if (r.getSensors() == null) continue;
+
+            for (Sensor s : r.getSensors()) {
+
+                if (s.getId() == null) continue;
+
+                if (s.getId().equals(sensorId)) {
+
+                    if ("MAINTENANCE".equalsIgnoreCase(s.getStatus())) {
                         throw new SensorUnavailableException("Sensor Unavailable");
+                    }
+
+                    if (s.getReadings() == null) {
+                        s.setReadings(new ArrayList<>());
                     }
 
                     s.setCurrentValue(reading.getValue());
@@ -33,16 +45,27 @@ public class SensorReadingResource {
                 }
             }
         }
+
         return "Sensor not found";
     }
 
     @GET
-    public List<Reading> getReadings(@PathParam("sensorId") String sensorId){
-        for(Room r : RoomResource.getRoomMap().values()){
-            for(Sensor s : r.getSensors()){
+    public List<Reading> getReadings(@PathParam("sensorId") String sensorId) {
 
+        for (Room r : RoomResource.getRoomMap().values()) {
 
-                if(s.getId().equals(sensorId)){
+            if (r.getSensors() == null) continue;
+
+            for (Sensor s : r.getSensors()) {
+
+                if (s.getId() == null) continue;
+
+                if (s.getId().equals(sensorId)) {
+
+                    if (s.getReadings() == null) {
+                        return new ArrayList<>();
+                    }
+
                     return s.getReadings();
                 }
             }

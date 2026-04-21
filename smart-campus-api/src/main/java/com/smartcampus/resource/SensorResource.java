@@ -16,25 +16,40 @@ import java.util.*;
 public class SensorResource {
     @POST
     public String addSensor(@QueryParam("roomId")String roomId, Sensor sensor){
+
+        if(roomId == null || roomId.isEmpty()){
+            return "room id is required";
+        }
+
+
         Room room = RoomResource.getRoomMap().get(roomId);
 
         if(room == null){
             throw new LinkedResourceNotFoundException("Room not found");
         }
 
-        room.getSensors().add(sensor);
+        
+
+        else{
+            room.getSensors().add(sensor);
         return "Sensor added";
+        }
     }
 
     @GET
-    public List<Sensor> getSensors(@QueryParam("type")String type){
+    public List<Sensor> getSensors(@QueryParam("type") String type) {
+
         List<Sensor> result = new ArrayList<>();
 
-        for(Room r : RoomResource.getRoomMap().values()){
-            for(Sensor s : r.getSensors()){
+        for (Room r : RoomResource.getRoomMap().values()) {
 
+            if (r.getSensors() == null) continue;
 
-                if(type == null|| s.getType().equals(type)){
+            for (Sensor s : r.getSensors()) {
+
+                if (s.getType() == null) continue;
+
+                if (type == null || s.getType().equalsIgnoreCase(type)) {
                     result.add(s);
                 }
             }

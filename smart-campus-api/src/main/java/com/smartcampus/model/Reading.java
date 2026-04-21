@@ -5,6 +5,10 @@ public class Reading {
     private double value;
 
 
+    public Reading(){
+        
+    }
+
     public Reading(double value) {
         this.value = value;
     }

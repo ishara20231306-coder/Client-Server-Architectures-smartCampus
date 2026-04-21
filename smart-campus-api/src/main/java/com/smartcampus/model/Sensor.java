@@ -10,7 +10,9 @@ public class Sensor{
     private double currentValue;
     private List<Reading> readings = new ArrayList<>();
 
-
+    public Sensor(){
+        
+    }
 
     public Sensor(String id, String type) {
         this.id = id;
