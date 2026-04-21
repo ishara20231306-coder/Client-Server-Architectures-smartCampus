@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sensor{
-    private String id;
+    public String id;
     private String type;
     private String status = "ACTIVE";
     private double currentValue;
@@ -17,36 +17,36 @@ public class Sensor{
         this.type = type;
     }
 
-    public String getId() { 
+    public String getId(){ 
         return id; 
     }
-    public void setId(String id) { 
+    public void setId(String id){ 
         this.id = id; 
     }
 
-    public String getType() { 
+    public String getType(){ 
         return type; 
     }
-    public void setType(String type) { 
+    public void setType(String type){ 
         this.type = type; 
     }
 
-    public double getCurrentValue() { 
+    public double getCurrentValue(){ 
         return currentValue; 
     }
     public void setCurrentValue(double currentValue) { 
         this.currentValue = currentValue; 
     }
 
-    public String getStatus() { 
+    public String getStatus(){ 
         return status; 
     }
-    public void setStatus(String status) { 
+    public void setStatus(String status){ 
         this.status = status; 
     }
 
-    public List<Reading> getReadings() { 
-        return readings; 
+    public List<Reading> getReadings(){ 
+        return readings;
     }
     public void setReadings(List<Reading> readings) { 
         this.readings = readings; 
