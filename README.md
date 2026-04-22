@@ -7,9 +7,9 @@ A RESTful API built with JAX-RS (Jersey) and Grizzly HTTP Server for managing sm
 ## API Overview
 
 This API provides a versioned interface at `/api/v1` for managing:
-- **Rooms** — Physical spaces on campus
-- **Sensors** — IoT devices assigned to rooms
-- **Readings** — Historical sensor data logs
+ **Rooms** - Physical spaces on campus
+ **Sensors** - IoT devices assigned to rooms
+ **Readings** - Historical sensor data logs
 
 All data is stored in-memory using `HashMap` and `ArrayList` structures. No database is used.
 
@@ -20,36 +20,35 @@ http://localhost:8081/api/v1
 
 ### Endpoint Summary
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | /api/v1 | Discovery / API metadata |
-| GET | /api/v1/rooms | List all rooms |
-| POST | /api/v1/rooms | Create a room |
-| GET | /api/v1/rooms/{id} | Get a room by ID |
-| DELETE | /api/v1/rooms/{id} | Delete a room (fails if sensors exist) |
-| GET | /api/v1/sensors | List all sensors (optional `?type=` filter) |
-| POST | /api/v1/sensors?roomId={id} | Register a sensor to a room |
-| GET | /api/v1/sensors/{id}/readings | Get all readings for a sensor |
-| POST | /api/v1/sensors/{id}/readings | Add a new reading for a sensor |
+| Method   | Path |                        | Description |
+| GET      | /api/v1 |                     | Discovery / API metadata |
+| GET      | /api/v1/rooms |               | List all rooms |
+| POST     | /api/v1/rooms |               | Create a room |
+| GET      | /api/v1/rooms/{id} |          | Get a room by ID |
+| DELETE   | /api/v1/rooms/{id} |          | Delete a room (fails if sensors exist) |
+| GET      | /api/v1/sensors |             | List all sensors (optional `?type=` filter) |
+| POST     | /api/v1/sensors?roomId={id}|  | Register a sensor to a room |
+| GET      | /api/v1/sensors/{id}/readings|| Get all readings for a sensor |
+| POST     | /api/v1/sensors/{id}/readings|| Add a new reading for a sensor |
 
 ---
 
 ## Technology Stack
 
-- Java 17+
-- JAX-RS (Jakarta EE)
-- Jersey (JAX-RS implementation)
-- Grizzly HTTP Server (embedded)
-- Maven (build tool)
-- Jackson (JSON serialisation)
+ Java 17+
+ JAX-RS (Jakarta EE)
+ Jersey (JAX-RS implementation)
+ Grizzly HTTP Server (embedded)
+ Maven (build tool)
+ Jackson (JSON serialisation)
 
 ---
 
 ## How to Build and Run
 
 ### Prerequisites
-- Java 17 or higher installed
-- Maven 3.6+ installed
+ Java 17 or higher installed
+ Maven 3.6+ installed
 
 ### Steps
 
@@ -125,9 +124,9 @@ curl -X DELETE http://localhost:8081/api/v1/rooms/room1
 
 
 
-## Report — Answers to Coursework Questions
+## Report - Answers to Coursework Questions
 
-### Part 1 — Service Architecture & Setup
+### Part 1 - Service Architecture & Setup
 
 **Q: Explain the default lifecycle of a JAX-RS Resource class. Is a new instance created per request or treated as a singleton?**
 
@@ -141,7 +140,7 @@ HATEOAS (Hypermedia as the Engine of Application State) means that API responses
 
 
 
-### Part 2 — Room Management
+### Part 2 - Room Management
 
 **Q: When returning a list of rooms, what are the implications of returning only IDs versus full room objects?**
 
@@ -155,7 +154,7 @@ Idempotency means that calling the same operation multiple times produces the sa
 
 
 
-### Part 3 — Sensor Operations & Linking
+### Part 3 - Sensor Operations & Linking
 
 **Q: Explain the consequences if a client sends data in a format other than `application/json` to a `@Consumes(APPLICATION_JSON)` endpoint.**
 
@@ -169,7 +168,7 @@ Using `@QueryParam` for filtering (e.g., `GET /sensors?type=CO2`) is semanticall
 
 
 
-### Part 4 — Sub-Resources
+### Part 4 - Sub-Resources
 
 **Q: Discuss the architectural benefits of the Sub-Resource Locator pattern.**
 
@@ -177,7 +176,7 @@ The Sub-Resource Locator pattern allows a parent resource class to delegate hand
 
 
 
-### Part 5 — Error Handling & Exception Mapping
+### Part 5 - Error Handling & Exception Mapping
 
 **Q: Why is HTTP 422 (Unprocessable Entity) more semantically accurate than 404 when a `roomId` reference inside a JSON body doesn't exist?**
 
