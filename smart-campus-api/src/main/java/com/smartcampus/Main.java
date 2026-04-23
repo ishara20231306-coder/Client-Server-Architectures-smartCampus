@@ -13,6 +13,8 @@ import com.smartcampus.mapper.SensorUnavailableMapper;
 import com.smartcampus.resource.RoomResource;
 import com.smartcampus.resource.SensorReadingResource;
 import com.smartcampus.resource.SensorResource;
+import com.smartcampus.DiscoveryResource;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +25,8 @@ public class Main {
         .register(RoomNotEmptyMapper.class)
         .register(LinkedResourceNotFoundMapper.class)
         .register(SensorUnavailableMapper.class)
-        .register(GlobalExceptionMapper.class);
+        .register(GlobalExceptionMapper.class)
+        .register(DiscoveryResource.class);
 
 
         HttpServer hs = GrizzlyHttpServerFactory.createHttpServer(URI.create("http://localhost:8081/"), config);
