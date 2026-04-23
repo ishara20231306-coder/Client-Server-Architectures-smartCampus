@@ -31,13 +31,12 @@ public class Main {
 
         System.out.println("Server is running at " + server);
 
-        try{
-            Thread.currentThread().join();
-
-        }catch(InterruptedException e){
-            e.printStackTrace();
-        }
-
-
+        try {
+            if (java.awt.Desktop.isDesktopSupported() && java.awt.Desktop.getDesktop().isSupported(java.awt.Desktop.Action.BROWSE)) {
+                java.awt.Desktop.getDesktop().browse(new URI(server));
+            }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     }
 }
